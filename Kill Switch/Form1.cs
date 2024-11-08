@@ -83,13 +83,27 @@ namespace Kill_Switch
         // Freeze the screen (display a blank screen)
         private void BlankScreen()
         {
-            Form blankForm = new Form();
-            blankForm.FormBorderStyle = FormBorderStyle.None;
-            blankForm.WindowState = FormWindowState.Maximized;
-            blankForm.TopMost = true;
-            blankForm.BackColor = System.Drawing.Color.Black;
-            blankForm.Show();
+            // Loop through all available screens (monitors)
+            foreach (var screen in Screen.AllScreens)
+            {
+                // Create a new blank form for each screen
+                Form blankForm = new Form
+                {
+                    FormBorderStyle = FormBorderStyle.None,      // Remove borders
+                    WindowState = FormWindowState.Normal,        // Set to normal initially to position it
+                    TopMost = true,                              // Ensure it's always on top
+                    BackColor = System.Drawing.Color.Black,      // Set the background color to black
+                    StartPosition = FormStartPosition.Manual,    // Manual position setting
+                    Bounds = screen.Bounds                       // Position and size to cover each screen
+                };
+
+                // Show the form on the specified screen
+                blankForm.Show();
+                blankForm.WindowState = FormWindowState.Maximized; // Maximize after setting location
+            }
         }
+
+
 
         // Shut down the system immediately
         private void ShutdownComputer()
