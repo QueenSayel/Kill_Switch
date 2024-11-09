@@ -31,6 +31,7 @@
             lockCheckbox = new CheckBox();
             shutdownCheckbox = new CheckBox();
             freezeCheckbox = new CheckBox();
+            keyboardCheckbox = new CheckBox();
             SuspendLayout();
             // 
             // lockCheckbox
@@ -63,16 +64,28 @@
             freezeCheckbox.Text = "Screen freeze";
             freezeCheckbox.UseVisualStyleBackColor = true;
             // 
+            // keyboardCheckbox
+            // 
+            keyboardCheckbox.AutoSize = true;
+            keyboardCheckbox.Location = new Point(44, 114);
+            keyboardCheckbox.Name = "keyboardCheckbox";
+            keyboardCheckbox.Size = new Size(76, 19);
+            keyboardCheckbox.TabIndex = 3;
+            keyboardCheckbox.Text = "Keyboard";
+            keyboardCheckbox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(502, 450);
+            Controls.Add(keyboardCheckbox);
             Controls.Add(freezeCheckbox);
             Controls.Add(shutdownCheckbox);
             Controls.Add(lockCheckbox);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -82,5 +95,6 @@
         private CheckBox lockCheckbox;
         private CheckBox shutdownCheckbox;
         private CheckBox freezeCheckbox;
+        private CheckBox keyboardCheckbox;
     }
 }
